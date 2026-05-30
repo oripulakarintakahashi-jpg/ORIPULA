@@ -45,7 +45,7 @@
                 color: #000000 !important;
                 font-size: 11px !important;
             }
-            nav, .tab-btn, button, .no-print, #modal-help, #modal-export, .toast-container {
+            nav, .tab-btn, button, .no-print, #modal-help, #modal-export, .toast-container, .mobile-only-header, .mobile-nav {
                 display: none !important;
             }
             .tab-content {
@@ -91,14 +91,14 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold tracking-tight">人生の経歴・動詞構造化ワーク</h1>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">New Hire Onboarding System v5.0</p>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">New Hire Onboarding System v6.0</p>
                 </div>
             </div>
             
             <div class="flex items-center bg-slate-100 p-1 rounded-xl">
                 <button onclick="switchTab('guide')" class="tab-btn active px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-guide">1. ガイド</button>
                 <button onclick="switchTab('timeline')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-timeline">2. モチベ波</button>
-                <button onclick="switchTab('list')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-list">3. 動詞洗い出し</button>
+                <button onclick="switchTab('list')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-list">3. 動詞評価（3択）</button>
                 <button onclick="switchTab('deep')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-deep">4. 本質深掘り</button>
                 <button onclick="switchTab('analysis')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition duration-200" id="btn-analysis">5. 自己分析マップ</button>
             </div>
@@ -118,12 +118,12 @@
     </nav>
 
     <!-- モバイル用ヘッダー (スマホ閲覧時のみ表示) -->
-    <header class="bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-50 flex justify-between items-center md:hidden no-print">
+    <header class="bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-50 flex justify-between items-center md:hidden no-print mobile-only-header">
         <div class="flex items-center gap-2">
             <div class="bg-slate-900 text-white p-1.5 rounded-md text-xs">
                 <i class="fa-solid fa-route"></i>
             </div>
-            <h1 class="text-sm font-bold">動詞構造化ワーク v5.0</h1>
+            <h1 class="text-sm font-bold">動詞構造化 v6.0</h1>
         </div>
         <button onclick="generateShareUrl()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm flex items-center gap-1">
             <i class="fa-solid fa-share-nodes"></i> URL提出
@@ -158,43 +158,39 @@
         <section id="tab-guide" class="tab-content active space-y-6 print-page">
             <div class="grid lg:grid-cols-2 gap-6 md:gap-8 items-center py-4 md:py-10">
                 <div class="space-y-4 md:space-y-6">
-                    <span class="bg-emerald-100 text-emerald-800 text-[10px] md:text-xs font-extrabold px-3 py-1 rounded-full uppercase">Mobile Optimization</span>
-                    <h2 class="text-2xl md:text-4xl font-bold leading-tight">「なんとなく過ごした時間」を<br><span class="text-emerald-600">再現性のある才能</span>へ</h2>
+                    <span class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-extrabold px-3 py-1 rounded-full uppercase">新評価基準: 意思と努力の3択</span>
+                    <h2 class="text-2xl md:text-4xl font-bold leading-tight">「成果の大きさ」に惑わされない、<br>本当の<span class="text-emerald-600">行動習慣</span>を浮き彫りにする</h2>
                     <p class="text-slate-600 leading-relaxed text-xs md:text-sm">
-                        新人研修の最初の壁は、「自分の強みがわからない」という思い込みです。このワークショップでは、自分の人生のモチベーションの波をグラフ化し、そこから本当に熱量があったエピソード（動詞）を抽出。そして、そのエピソードを「要素分解」して、あなたを夢中にさせている「行動のエンジン」を突き止めます。
+                        これまでの「好き度/得意度」の5段階評価は、「成果が出たから得意」「成果があったから好き」という結果論に引きずられがちでした。<br>
+                        本システムでは、そのブレをなくすため、<strong>「また繰り返したいか（意思）」</strong>と<strong>「努力なくできるか（努力量）」</strong>の3択基準へと評価ロジックを全面的に一新。あなたの真の行動習慣を「天職」「仕事」「修行」「避ける」の4象限でスマートに仕分けます。
                     </p>
-                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-800 leading-relaxed">
-                        <strong>💡 スマホ・PC連動（配布・提出もラクラク）:</strong><br>
-                        入力したデータは「提出用URLを発行」から、いつでも1つのリンクに変換できます。そのURLをSlack等で共有するだけで、ファイルを一切送らずにメンターへ提出完了です！
+                    <div class="bg-[#eff6ff] border border-blue-200 p-4 rounded-xl text-xs text-blue-800 leading-relaxed">
+                        <strong>💡 この指標変更の目的:</strong><br>
+                        「成果が上がったか」ではなく、<strong>「そのプロセス自体をまた繰り返したいか」「そのプロセスにどのくらいストレスや努力を要したか」</strong>で整理することで、未経験の実務アサインであっても確実に強みを発揮できる「再現性の高いアクション習慣」が見出せます。
                     </div>
                 </div>
                 <div class="bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-2xl relative overflow-hidden">
                     <h3 class="text-sm md:text-lg font-bold mb-4 md:mb-6 flex items-center gap-2 text-emerald-400">
-                        <i class="fa-solid fa-stairs"></i> 構造化の5つのステップ
+                        <i class="fa-solid fa-stairs"></i> 新評価軸：4象限キャリアマッピング
                     </h3>
-                    <ul class="space-y-3 md:space-y-4 text-[11px] md:text-xs">
-                        <li class="flex gap-3 md:gap-4">
-                            <span class="w-5 h-5 md:w-6 md:h-6 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-[10px] md:text-xs shrink-0">1</span>
-                            <div>
-                                <p class="font-bold">人生のモチベーション波グラフの作成</p>
-                                <p class="text-[10px] md:text-[11px] text-slate-400">小学生〜現在までの熱量を可視化し、エピソードを見つける足がかりにします。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-3 md:gap-4">
-                            <span class="w-5 h-5 md:w-6 md:h-6 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-[10px] md:text-xs shrink-0">2</span>
-                            <div>
-                                <p class="font-bold">動詞の洗い出し（定量評価）</p>
-                                <p class="text-[10px] md:text-[11px] text-slate-400">各時期の活動を「〜する」という最小単位の動詞に分解して、好き・得意をスコア化します。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-3 md:gap-4">
-                            <span class="w-5 h-5 md:w-6 md:h-6 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-[10px] md:text-xs shrink-0">3</span>
-                            <div>
-                                <p class="font-bold">本質の深掘り（定性・エクセル再現）</p>
-                                <p class="text-[10px] md:text-[11px] text-slate-400">最重要業務を5ステップに構造分解。こだわり（美学）と夢中になる本質的な理由を言語化します。</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="grid grid-cols-2 gap-3 text-[11px] md:text-xs">
+                        <div class="bg-emerald-950/40 p-3 rounded-lg border border-emerald-800/60">
+                            <span class="text-emerald-400 font-extrabold block">🌟 天職エリア</span>
+                            また繰り返したい × 簡単にできる。モチベーションの源泉そのもの。
+                        </div>
+                        <div class="bg-blue-950/40 p-3 rounded-lg border border-blue-800/60">
+                            <span class="text-blue-400 font-extrabold block">📚 修行エリア</span>
+                            また繰り返したい × 努力が必要。スキルが伴えば大輪を咲かせる余白。
+                        </div>
+                        <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+                            <span class="text-slate-300 font-extrabold block">⚙️ 仕事エリア</span>
+                            どちらでもない × 簡単・まあまあ。頼まれるとそつなくこなす武器。
+                        </div>
+                        <div class="bg-rose-950/40 p-3 rounded-lg border border-rose-800/60">
+                            <span class="text-rose-400 font-extrabold block">🚫 避けるエリア</span>
+                            繰り返したくない、あるいは極めて難しかった苦手。可能な限り他人に任せる。
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -266,8 +262,8 @@
         <section id="tab-list" class="tab-content space-y-4 print-page">
             <div class="flex justify-between items-end mb-2">
                 <div>
-                    <h2 class="text-xl md:text-2xl font-bold">3. 動詞の洗い出し</h2>
-                    <p class="text-xs text-slate-500">あなたのこれまでの活動を、「～する」という動詞形式に分解してリストにしましょう。</p>
+                    <h2 class="text-xl md:text-2xl font-bold">3. 動詞の洗い出しと行動評価</h2>
+                    <p class="text-xs text-slate-500">過去の行動（動詞）を書き出し、「また繰り返したいか（好き度）」「どのくらい簡単にできたか（得意度）」で評価します。</p>
                 </div>
                 <button onclick="addListRow()" class="px-3 py-1.5 md:px-4 md:py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition shadow-sm">
                     <i class="fa-solid fa-plus"></i> 追加
@@ -279,13 +275,13 @@
                 <table class="w-full border-collapse">
                     <thead class="bg-slate-50 border-b border-slate-200">
                         <tr class="text-left text-[11px] uppercase tracking-wider text-slate-400 font-bold">
-                            <th class="px-6 py-4 w-12">#</th>
-                            <th class="px-6 py-4 w-1/4">対象の時期・エピソード</th>
-                            <th class="px-6 py-4 w-1/4 text-slate-900">具体的な行動【動詞】</th>
-                            <th class="px-6 py-4">得られた成果・変化</th>
-                            <th class="px-6 py-4 w-28 text-center">好き度 (1-5)</th>
-                            <th class="px-6 py-4 w-28 text-center">得意度 (1-5)</th>
-                            <th class="px-6 py-4 w-12"></th>
+                            <th class="px-4 py-4 w-10">#</th>
+                            <th class="px-4 py-4 w-[15%]">対象の時期・経験</th>
+                            <th class="px-4 py-4 w-[25%] text-slate-900">具体的な行動【動詞で書く】</th>
+                            <th class="px-4 py-4 w-[18%]">成果・変化</th>
+                            <th class="px-4 py-4 w-[21%] text-center">好き度 (行動そのものをやりたいか)</th>
+                            <th class="px-4 py-4 w-[21%] text-center">得意度 (努力感はどうだったか)</th>
+                            <th class="px-4 py-4 w-10"></th>
                         </tr>
                     </thead>
                     <tbody id="list-tbody-pc" class="divide-y divide-slate-100">
@@ -323,8 +319,8 @@
             <div class="grid lg:grid-cols-3 gap-6 md:gap-8">
                 <div class="lg:col-span-2 bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-slate-200">
                     <div class="mb-6">
-                        <h3 class="text-lg md:text-xl font-bold">モチベーション・マップ</h3>
-                        <p class="text-xs text-slate-400">好き度と得意度の相関から、あなたのコア能力をグラフィカルに特定します。</p>
+                        <h3 class="text-lg md:text-xl font-bold">意志と努力のキャリアマップ</h3>
+                        <p class="text-xs text-slate-400">「また繰り返したいか（熱量）」と「どれだけ簡単にできるか（努力量）」を3×3マッピングし、本当に再現性のある強みを判定します。</p>
                     </div>
                     <div class="relative h-[320px] md:h-[450px] w-full bg-slate-50 rounded-xl p-4 border border-slate-100">
                         <canvas id="scatterChart"></canvas>
@@ -334,26 +330,46 @@
                 <div class="space-y-4">
                     <div class="bg-emerald-50 border border-emerald-100 p-4 md:p-6 rounded-2xl text-xs">
                         <h4 class="text-emerald-900 font-bold flex items-center gap-2 mb-2">
-                            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span> 才能の源泉（右上）
+                            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span> 🌟 天職エリア
                         </h4>
-                        <p class="text-emerald-700 leading-relaxed">
-                            「好きで、かつ得意」な行動です。あなた自身が最も高い自走力を発揮できる領域です。インターン初期からこの業務をアサインされると成長速度が最大化します。
+                        <p class="text-emerald-700 leading-relaxed font-medium">
+                            判定条件：【また繰り返したい × 簡単にできる】
+                        </p>
+                        <p class="text-emerald-600 mt-1">
+                            努力感を感じずに自然と成果を出せて、かつやりがいを持って何回でもやりたいと感じる最強の行動。あなたの今後のキャリアやインターンシップ実務の中心に据えるべきです。
                         </p>
                     </div>
-                    <div class="bg-amber-50 border border-amber-100 p-4 md:p-6 rounded-2xl text-xs">
-                        <h4 class="text-amber-900 font-bold flex items-center gap-2 mb-2">
-                            <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span> 燃え尽き注意（右下）
+                    <div class="bg-blue-50 border border-blue-100 p-4 md:p-6 rounded-2xl text-xs">
+                        <h4 class="text-blue-900 font-bold flex items-center gap-2 mb-2">
+                            <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span> 📚 修行エリア
                         </h4>
-                        <p class="text-amber-700 leading-relaxed">
-                            「得意だが、実は嫌い」な行動です。成果は出ますが、エネルギー消費が激しくモチベーション低下に繋がりやすい注意領域です。
+                        <p class="text-blue-700 leading-relaxed font-medium">
+                            判定条件：【また繰り返したい × まあまあできる or 難しかった】
+                        </p>
+                        <p class="text-blue-600 mt-1">
+                            本人は強い関心と愛着がありやりたいけれど、まだ自分のスキルや習熟が追いついていない領域。ここを集中的に研修やフィードバックで学ぶことで、爆発的なブレイクスルーが期待できます。
                         </p>
                     </div>
-                    <div class="bg-slate-200 p-4 md:p-6 rounded-2xl text-xs">
+                    <div class="bg-slate-100 border border-slate-200 p-4 md:p-6 rounded-2xl text-xs">
                         <h4 class="text-slate-900 font-bold flex items-center gap-2 mb-2">
-                            <span class="w-2.5 h-2.5 bg-slate-600 rounded-full"></span> ポテンシャル領域（左上）
+                            <span class="w-2.5 h-2.5 bg-slate-500 rounded-full"></span> ⚙️ 仕事エリア
                         </h4>
-                        <p class="text-slate-600 leading-relaxed">
-                            「好きだが、まだ得意ではない」行動です。ここを徹底的なフィードバックを交えて指導することで、将来のブレイクスルーを生み出せます。
+                        <p class="text-slate-700 leading-relaxed font-medium">
+                            判定条件：【どちらでもない × 簡単 or まあまあできる】
+                        </p>
+                        <p class="text-slate-600 mt-1">
+                            特段熱い熱量があるわけではないが、指示されたり頼まれればストレスなく高いクオリティで完了できる活動。安定した基盤タスクとしてチームに貢献できます。
+                        </p>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-100 p-4 md:p-6 rounded-2xl text-xs">
+                        <h4 class="text-rose-900 font-bold flex items-center gap-2 mb-2">
+                            <span class="w-2.5 h-2.5 bg-rose-500 rounded-full"></span> 🚫 避けるエリア
+                        </h4>
+                        <p class="text-rose-700 leading-relaxed font-medium">
+                            判定条件：【繰り返したくない の組み合わせ、または どちらでもない × 難しかった】
+                        </p>
+                        <p class="text-rose-600 mt-1">
+                            本人が明確に心理的に負担に感じているか、非常に多大なストレスを伴うタスク。これらを長期間アサインし続けると離職やモチベーション崩壊に直結するため、チーム内の他者に任せるか仕組み化で排除します。
                         </p>
                     </div>
                 </div>
@@ -363,7 +379,7 @@
     </main>
 
     <!-- モバイル用下部タブナビゲーション (スマホ画面時のみ) -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 py-2 px-1 flex justify-around items-center z-45 no-print">
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 py-2 px-1 flex justify-around items-center z-45 no-print mobile-nav">
         <button onclick="switchTab('guide')" id="mbtn-guide" class="flex flex-col items-center gap-1 text-slate-500 text-[10px] w-1/5">
             <i class="fa-solid fa-circle-info text-base"></i><span>ガイド</span>
         </button>
@@ -371,7 +387,7 @@
             <i class="fa-solid fa-chart-line text-base"></i><span>グラフ</span>
         </button>
         <button onclick="switchTab('list')" id="mbtn-list" class="flex flex-col items-center gap-1 text-slate-500 text-[10px] w-1/5">
-            <i class="fa-solid fa-list-check text-base"></i><span>洗い出し</span>
+            <i class="fa-solid fa-list-check text-base"></i><span>評価</span>
         </button>
         <button onclick="switchTab('deep')" id="mbtn-deep" class="flex flex-col items-center gap-1 text-slate-500 text-[10px] w-1/5">
             <i class="fa-solid fa-magnifying-glass-chart text-base"></i><span>深掘り</span>
@@ -478,11 +494,12 @@
             { period: "大学生/直近", score: 30, desc: "個別指導塾のバイトで生徒の学力分析と提案を行った" }
         ];
 
+        // 3択評価ロジックに適合させた初期動詞データ
         const defaultListData = [
-            { org: "高校・文化祭", verb: "新規のステージ企画を起案する", result: "前年比1.5倍の集客に成功", love: 5, skill: 4 },
-            { org: "高校・文化祭", verb: "関係部活動のスケジュール調整をする", result: "タイムテーブル通りに進行", love: 2, skill: 4 },
-            { org: "個別指導塾バイト", verb: "生徒の誤答の傾向を分析する", result: "苦手克服シートの作成", love: 5, skill: 5 },
-            { org: "個別指導塾バイト", verb: "生徒のモチベーションを褒めて促す", result: "登校拒否だった子が皆勤に", love: 4, skill: 3 }
+            { org: "高校・文化祭", verb: "新規のステージ企画を起案する", result: "前年比1.5倍の集客に成功", love: "また繰り返したい", skill: "まあまあできる" },
+            { org: "高校・文化祭", verb: "関係部活動のスケジュール調整をする", result: "タイムテーブル通りに進行", love: "どちらでもない", skill: "簡単にできる" },
+            { org: "個別指導塾バイト", verb: "生徒の誤答の傾向を分析する", result: "苦手克服シートの作成", love: "また繰り返したい", skill: "簡単にできる" },
+            { org: "個別指導塾バイト", verb: "生徒のモチベーションを褒めて促す", result: "登校拒否だった子が皆勤に", love: "また繰り返したい", skill: "難しかった" }
         ];
 
         const defaultDeepDiveData = [
@@ -524,7 +541,7 @@
         // ローカルストレージからのロード、またはデフォルト
         function loadAllData() {
             const savedTimeline = localStorage.getItem('onboard_timeline');
-            const savedList = localStorage.getItem('onboard_list');
+            const savedList = localStorage.getItem('onboard_list_v2'); // 3択移行のためキーを変更
             const savedDeep = localStorage.getItem('onboard_deep');
 
             timelineData = savedTimeline ? JSON.parse(savedTimeline) : JSON.parse(JSON.stringify(defaultTimelineData));
@@ -544,10 +561,10 @@
             }
         }
 
-        // 状態保存 (URLから展開中は「ローカル用保存キー」を汚さないよう分岐可能ですが、作業の継続性を担保するためLocalStorageに保存します)
+        // 状態保存
         function saveState() {
             localStorage.setItem('onboard_timeline', JSON.stringify(timelineData));
-            localStorage.setItem('onboard_list', JSON.stringify(listData));
+            localStorage.setItem('onboard_list_v2', JSON.stringify(listData));
             localStorage.setItem('onboard_deep', JSON.stringify(deepDiveData));
         }
 
@@ -652,81 +669,155 @@
             });
         }
 
-        // 動詞洗い出しのレンダリング (PC / スマホ両対応)
+        // 4つのキャリアエリアの自動判定ロジック
+        function getCarrierArea(love, skill) {
+            if (love === "また繰り返したい") {
+                if (skill === "簡単にできる") return { area: "🌟 天職", color: "text-emerald-600 bg-emerald-50 border-emerald-200" };
+                return { area: "📚 修行", color: "text-blue-600 bg-blue-50 border-blue-200" };
+            } else if (love === "どちらでもない") {
+                if (skill === "簡単にできる" || skill === "まあまあできる") return { area: "⚙️ 仕事", color: "text-slate-600 bg-slate-50 border-slate-200" };
+                return { area: "🚫 避ける", color: "text-rose-600 bg-rose-50 border-rose-200" };
+            } else if (love === "繰り返したくない") {
+                return { area: "🚫 避ける", color: "text-rose-600 bg-rose-50 border-rose-200" };
+            }
+            return { area: "未設定", color: "text-slate-400 bg-slate-50 border-slate-100" };
+        }
+
+        // 動詞洗い出しのレンダリング (PC / スマホ両対応 - 3択ラジオボタン完全実装)
         function renderList() {
             const tbodyPc = document.getElementById('list-tbody-pc');
             const cardMobile = document.getElementById('list-cards-mobile');
 
             tbodyPc.innerHTML = '';
-            cardMobile.innerHTML = '';
+            if (cardMobile) cardMobile.innerHTML = '';
 
             listData.forEach((item, idx) => {
+                const diag = getCarrierArea(item.love, item.skill);
+
                 // PC用
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td class="px-6 py-4 text-[10px] font-mono text-slate-400">${idx+1}</td>
-                    <td class="px-4 py-2"><input type="text" value="${item.org}" oninput="updateListData(${idx}, 'org', this.value)" class="w-full border-none p-1 text-xs focus:ring-1 focus:ring-slate-200 rounded"></td>
-                    <td class="px-4 py-2"><input type="text" value="${item.verb}" oninput="updateListData(${idx}, 'verb', this.value)" class="w-full border-none p-1 text-xs font-bold text-emerald-700 focus:ring-1 focus:ring-emerald-200 rounded"></td>
-                    <td class="px-4 py-2"><input type="text" value="${item.result}" oninput="updateListData(${idx}, 'result', this.value)" class="w-full border-none p-1 text-xs focus:ring-1 focus:ring-slate-200 rounded"></td>
-                    <td class="px-4 py-2">
-                        <select onchange="updateListData(${idx}, 'love', parseInt(this.value))" class="w-full border border-slate-200 rounded p-1 text-xs font-bold bg-white">
-                            ${[5,4,3,2,1].map(v => `<option value="${v}" ${item.love === v ? 'selected' : ''}>${v}</option>`).join('')}
-                        </select>
+                    <td class="px-4 py-4 text-[10px] font-mono text-slate-400">${idx+1}</td>
+                    <td class="px-2 py-3"><input type="text" value="${item.org}" oninput="updateListData(${idx}, 'org', this.value)" class="w-full border-none p-1 text-xs focus:ring-1 focus:ring-slate-200 rounded" placeholder="例:塾バイト"></td>
+                    <td class="px-2 py-3"><input type="text" value="${item.verb}" oninput="updateListData(${idx}, 'verb', this.value)" class="w-full border-none p-1 text-xs font-bold text-emerald-700 focus:ring-1 focus:ring-emerald-200 rounded" placeholder="例:苦手箇所を分析する"></td>
+                    <td class="px-2 py-3"><input type="text" value="${item.result}" oninput="updateListData(${idx}, 'result', this.value)" class="w-full border-none p-1 text-xs focus:ring-1 focus:ring-slate-200 rounded" placeholder="例:成績10点アップ"></td>
+                    
+                    <!-- 好き度（繰り返したいか）3択ラジオボタン -->
+                    <td class="px-3 py-3 text-xs">
+                        <div class="flex flex-col gap-1.5 justify-center">
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="love-pc-${idx}" value="また繰り返したい" ${item.love === 'また繰り返したい' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-emerald-600 scale-90">
+                                <span class="font-semibold text-emerald-700">また繰り返したい</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="love-pc-${idx}" value="どちらでもない" ${item.love === 'どちらでもない' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-slate-600 scale-90">
+                                <span class="text-slate-600">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="love-pc-${idx}" value="繰り返したくない" ${item.love === '繰り返したくない' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-rose-600 scale-90">
+                                <span class="text-rose-600">繰り返したくない</span>
+                            </label>
+                        </div>
                     </td>
-                    <td class="px-4 py-2">
-                        <select onchange="updateListData(${idx}, 'skill', parseInt(this.value))" class="w-full border border-slate-200 rounded p-1 text-xs font-bold bg-white">
-                            ${[5,4,3,2,1].map(v => `<option value="${v}" ${item.skill === v ? 'selected' : ''}>${v}</option>`).join('')}
-                        </select>
+
+                    <!-- 得意度（努力感）3択ラジオボタン -->
+                    <td class="px-3 py-3 text-xs">
+                        <div class="flex flex-col gap-1.5 justify-center">
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="skill-pc-${idx}" value="簡単にできる" ${item.skill === '簡単にできる' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-emerald-600 scale-90">
+                                <span class="font-semibold text-emerald-700">簡単にできる <span class="text-[9px] font-normal text-slate-400">(自然とできた)</span></span>
+                            </label>
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="skill-pc-${idx}" value="まあまあできる" ${item.skill === 'まあまあできる' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-slate-600 scale-90">
+                                <span class="text-slate-600">まあまあできる <span class="text-[9px] font-normal text-slate-400">(工夫が必要)</span></span>
+                            </label>
+                            <label class="flex items-center gap-1.5 cursor-pointer hover:text-slate-900">
+                                <input type="radio" name="skill-pc-${idx}" value="難しかった" ${item.skill === '難しかった' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-rose-600 scale-90">
+                                <span class="text-rose-600">難しかった <span class="text-[9px] font-normal text-slate-400">(努力が必要)</span></span>
+                            </label>
+                        </div>
                     </td>
-                    <td class="px-4 py-2 text-center">
+
+                    <td class="px-2 py-3 text-center">
                         <button onclick="removeListRow(${idx})" class="text-slate-300 hover:text-rose-500 transition"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 `;
                 tbodyPc.appendChild(tr);
 
                 // スマホ用 (カード型)
-                const card = document.createElement('div');
-                card.className = "bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3 relative";
-                card.innerHTML = `
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <span class="text-xs font-bold text-slate-400">動詞エピソード #${idx+1}</span>
-                        <button onclick="removeListRow(${idx})" class="text-rose-500 text-xs font-semibold"><i class="fa-solid fa-trash-can"></i> 削除</button>
-                    </div>
-                    <div class="grid grid-cols-1 gap-2.5">
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-400">対象の時期・出来事</label>
-                            <input type="text" value="${item.org}" oninput="updateListData(${idx}, 'org', this.value)" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs">
+                if (cardMobile) {
+                    const card = document.createElement('div');
+                    card.className = "bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3 relative";
+                    card.innerHTML = `
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span class="text-xs font-bold text-slate-400">動詞エピソード #${idx+1}</span>
+                            <button onclick="removeListRow(${idx})" class="text-rose-500 text-xs font-semibold"><i class="fa-solid fa-trash-can"></i> 削除</button>
                         </div>
-                        <div>
-                            <label class="text-[10px] font-bold text-emerald-600">具体的な行動【動詞】</label>
-                            <input type="text" value="${item.verb}" oninput="updateListData(${idx}, 'verb', this.value)" class="w-full border border-emerald-300 rounded-lg px-2.5 py-1.5 text-xs font-bold text-emerald-700">
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-400">得られた成果・変化</label>
-                            <input type="text" value="${item.result}" oninput="updateListData(${idx}, 'result', this.value)" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs">
-                        </div>
-                        <div class="grid grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 gap-3">
                             <div>
-                                <label class="text-[10px] font-bold text-slate-400">好き度 (1-5)</label>
-                                <select onchange="updateListData(${idx}, 'love', parseInt(this.value))" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs bg-white font-bold">
-                                    ${[5,4,3,2,1].map(v => `<option value="${v}" ${item.love === v ? 'selected' : ''}>${v}</option>`).join('')}
-                                </select>
+                                <label class="text-[10px] font-bold text-slate-400 block mb-1">対象の時期・出来事</label>
+                                <input type="text" value="${item.org}" oninput="updateListData(${idx}, 'org', this.value)" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs">
                             </div>
                             <div>
-                                <label class="text-[10px] font-bold text-slate-400">得意度 (1-5)</label>
-                                <select onchange="updateListData(${idx}, 'skill', parseInt(this.value))" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs bg-white font-bold">
-                                    ${[5,4,3,2,1].map(v => `<option value="${v}" ${item.skill === v ? 'selected' : ''}>${v}</option>`).join('')}
-                                </select>
+                                <label class="text-[10px] font-bold text-emerald-600 block mb-1">具体的な行動【動詞】</label>
+                                <input type="text" value="${item.verb}" oninput="updateListData(${idx}, 'verb', this.value)" class="w-full border border-emerald-300 rounded-lg px-2.5 py-1.5 text-xs font-bold text-emerald-700">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-400 block mb-1">得られた成果・変化</label>
+                                <input type="text" value="${item.result}" oninput="updateListData(${idx}, 'result', this.value)" class="w-full border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs">
+                            </div>
+
+                            <!-- 好き度（繰り返したい度）3択 -->
+                            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <label class="text-[10px] font-bold text-slate-500 block mb-2">好き度 (行動そのものをやりたいか？)</label>
+                                <div class="grid grid-cols-1 gap-1.5">
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="love-mobile-${idx}" value="また繰り返したい" ${item.love === 'また繰り返したい' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-emerald-600">
+                                        <span>また繰り返したい</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="love-mobile-${idx}" value="どちらでもない" ${item.love === 'どちらでもない' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-slate-600">
+                                        <span>どちらでもない</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="love-mobile-${idx}" value="繰り返したくない" ${item.love === '繰り返したくない' ? 'checked' : ''} onchange="updateListData(${idx}, 'love', this.value)" class="accent-rose-600">
+                                        <span>繰り返したくない</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 得意度（努力感）3択 -->
+                            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <label class="text-[10px] font-bold text-slate-500 block mb-2">得意度 (努力の度合いはどうだったか？)</label>
+                                <div class="grid grid-cols-1 gap-1.5">
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="skill-mobile-${idx}" value="簡単にできる" ${item.skill === '簡単にできる' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-emerald-600">
+                                        <span>簡単にできる <span class="text-[9px] text-slate-400">(自然とできた)</span></span>
+                                    </label>
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="skill-mobile-${idx}" value="まあまあできる" ${item.skill === 'まあまあできる' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-slate-600">
+                                        <span>まあまあできる <span class="text-[9px] text-slate-400">(工夫が必要)</span></span>
+                                    </label>
+                                    <label class="flex items-center gap-2 text-xs">
+                                        <input type="radio" name="skill-mobile-${idx}" value="難しかった" ${item.skill === '難しかった' ? 'checked' : ''} onchange="updateListData(${idx}, 'skill', this.value)" class="accent-rose-600">
+                                        <span>難しかった <span class="text-[9px] text-slate-400">(多大な努力)</span></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-100 pt-2 flex items-center justify-between">
+                                <span class="text-[10px] text-slate-400">現在判定:</span>
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-bold border ${diag.color}">${diag.area}</span>
                             </div>
                         </div>
-                    </div>
-                `;
-                cardMobile.appendChild(card);
+                    `;
+                    cardMobile.appendChild(card);
+                }
             });
         }
 
         function addListRow() {
-            listData.push({ org: "", verb: "", result: "", love: 3, skill: 3 });
+            listData.push({ org: "", verb: "", result: "", love: "また繰り返したい", skill: "簡単にできる" });
             saveState();
             renderList();
         }
@@ -740,6 +831,11 @@
         function updateListData(idx, key, val) {
             listData[idx][key] = val;
             saveState();
+            
+            // PC表示の診断エリア変更用の動的更新
+            renderList();
+
+            // リアルタイムにグラフを更新する
             if (document.getElementById('tab-analysis').classList.contains('active')) {
                 renderChart();
             }
@@ -894,26 +990,107 @@
             }
         }
 
-        // 散布図描画
+        // 3択スコアの散布図マッピング値の変換
+        // 好き度 (Y軸): 1 = 繰り返したくない, 2 = どちらでもない, 3 = また繰り返したい
+        // 得意度 (X軸): 1 = 難しかった, 2 = まあまあできる, 3 = 簡単にできる
+        const scoreLoveMap = {
+            "繰り返したくない": 1,
+            "どちらでもない": 2,
+            "また繰り返したい": 3
+        };
+
+        const scoreSkillMap = {
+            "難しかった": 1,
+            "まあまあできる": 2,
+            "簡単にできる": 3
+        };
+
+        // 散布図描画 (3×3判定用に完全に最適化)
         function renderChart() {
             const ctx = document.getElementById('scatterChart').getContext('2d');
             if(scatterChart) scatterChart.destroy();
+
+            // 重複するプロット位置がある場合、視覚的に少しずらす（ジッター）ロジック
+            const seenCoords = {};
+            const processedPoints = listData.filter(d => d.verb).map(d => {
+                let x = scoreSkillMap[d.skill] || 2;
+                let y = scoreLoveMap[d.love] || 2;
+                
+                // ジッター処理（同一座標に重複した場合に微小にずらす）
+                const coordKey = `${x},${y}`;
+                if (seenCoords[coordKey]) {
+                    seenCoords[coordKey]++;
+                    x += (Math.random() - 0.5) * 0.18;
+                    y += (Math.random() - 0.5) * 0.18;
+                } else {
+                    seenCoords[coordKey] = 1;
+                }
+
+                return { x, y, label: d.verb, area: getCarrierArea(d.love, d.skill).area };
+            });
+
             scatterChart = new Chart(ctx, {
                 type: 'scatter',
                 data: {
                     datasets: [{
-                        label: 'あなたの動詞',
-                        data: listData.filter(d => d.verb).map(d => ({ x: d.skill, y: d.love, label: d.verb })),
-                        backgroundColor: '#10b981',
-                        pointRadius: 10
+                        label: '抽出されたあなたの行動習慣',
+                        data: processedPoints,
+                        backgroundColor: function(context) {
+                            const point = context.raw;
+                            if (!point) return '#94a3b8';
+                            if (point.area.includes('天職')) return '#10b981'; // 緑
+                            if (point.area.includes('修行')) return '#3b82f6'; // 青
+                            if (point.area.includes('仕事')) return '#64748b'; // グレー
+                            return '#f43f5e'; // 赤 (避ける)
+                        },
+                        pointRadius: 12,
+                        pointHoverRadius: 15
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { min: 0, max: 6 },
-                        y: { min: 0, max: 6 }
+                        x: {
+                            min: 0.5,
+                            max: 3.5,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(value) {
+                                    if (value === 1) return '難しかった (努力が必要)';
+                                    if (value === 2) return 'まあまあできる (工夫・学習)';
+                                    if (value === 3) return '簡単にできる (自然とできた)';
+                                    return '';
+                                }
+                            },
+                            title: { display: true, text: '得意度（こなすための努力度合い）', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        },
+                        y: {
+                            min: 0.5,
+                            max: 3.5,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(value) {
+                                    if (value === 1) return '繰り返したくない';
+                                    if (value === 2) return 'どちらでもない';
+                                    if (value === 3) return 'また繰り返したい';
+                                    return '';
+                                }
+                            },
+                            title: { display: true, text: '好き度（その行動自体の熱量）', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const raw = context.raw;
+                                    return `【${raw.label}】 ➔ 判定: ${raw.area}`;
+                                }
+                            }
+                        }
                     }
                 }
             });
